@@ -2,26 +2,15 @@
 <html lang="en">
 <head>
     <script>
-        // Define dataLayer and the gtag function.
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-        // Default Consent Mode (Denied)
-        gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'analytics_storage': 'denied',
-            'wait_for_update': 500
-        });
+        gtag('config', 'G-KRWNP6WR5E');
     </script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KRWNP6WR5E"></script>
-    <script>
-      gtag('js', new Date());
-      gtag('config', 'G-KRWNP6WR5E');
-    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -442,63 +431,8 @@
             }
         }, 1000);
     </script>
-    <!-- Consent Banner -->
-    <div id="consent-banner" class="fixed bottom-0 left-0 w-full bg-slate-900/95 backdrop-blur-md border-t border-white/10 p-6 z-50 transform translate-y-full transition-transform duration-500 flex flex-col md:flex-row items-center justify-between gap-4 shadow-2xl">
-        <div class="text-left max-w-3xl">
-            <h3 class="text-white font-bold text-lg mb-1">We value your privacy</h3>
-            <p class="text-gray-400 text-sm">
-                We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
-            </p>
-        </div>
-        <div class="flex gap-3 shrink-0">
-            <button id="deny-btn" class="px-6 py-2.5 rounded-lg border border-white/10 text-gray-300 hover:bg-white/5 transition-colors font-medium text-sm">
-                Decline
-            </button>
-            <button id="accept-btn" class="px-6 py-2.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white transition-colors font-bold text-sm shadow-lg shadow-rose-600/20">
-                Accept All
-            </button>
-        </div>
-    </div>
 
-    <script>
-        // Consent Logic
-        const banner = document.getElementById('consent-banner');
-        const acceptBtn = document.getElementById('accept-btn');
-        const denyBtn = document.getElementById('deny-btn');
 
-        // Check if consent is already stored
-        const consentStored = localStorage.getItem('consentState');
 
-        if (!consentStored) {
-            // Show banner after a short delay
-            setTimeout(() => {
-                banner.classList.remove('translate-y-full');
-            }, 1000);
-        } else if (consentStored === 'granted') {
-            updateConsent('granted');
-        }
-
-        function updateConsent(state) {
-            const consentMode = {
-                'ad_storage': state,
-                'ad_user_data': state,
-                'ad_personalization': state,
-                'analytics_storage': state
-            };
-            
-            gtag('consent', 'update', consentMode);
-            localStorage.setItem('consentState', state);
-        }
-
-        acceptBtn.addEventListener('click', () => {
-            updateConsent('granted');
-            banner.classList.add('translate-y-full');
-        });
-
-        denyBtn.addEventListener('click', () => {
-            updateConsent('denied');
-            banner.classList.add('translate-y-full');
-        });
-    </script>
 </body>
 </html>
